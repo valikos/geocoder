@@ -70,7 +70,11 @@ module Geocoder::Result
     # Inferred from format of @data.
     #
     def service_name
-      Geocoder.config.maxmind[:service]
+      if field_names.include?(Geocoder.config.maxmind[:service])
+        Geocoder.config.maxmind[:service]
+      else
+        nil
+      end
     end
 
     def field_names
