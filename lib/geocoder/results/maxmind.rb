@@ -70,10 +70,7 @@ module Geocoder::Result
     # Inferred from format of @data.
     #
     def service_name
-      self.class.field_names.to_a.each do |n,f|
-        return n if (@data.size..@data.size+1).include?(f.size)
-      end
-      nil
+      Geocoder.config.maxmind[:service]
     end
 
     def field_names
